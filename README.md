@@ -17,3 +17,5 @@ The MISMO Reference Model consists of several components including:
 The MISMO 3.4 specification is widely adopted amoung mortgage brokers, wholesale lenders, and other mortgage industry participants.
 
 This library is a collection of utilities for creating, updating, and validation MISMO XML files which can be used to communicate information about mortgage loans.
+
+https://www.mismo.org/standards-resources/residential-specifications/reference-model
