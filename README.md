@@ -13,5 +13,7 @@ The MISMO Reference Model consists of several components including:
 - The Logical Data Dictionary (LDD) which provides a business centric view of the model.
 - The Version 3 SMART Doc® standards which provide formats for electronic formatting of documents; and more.
 
-## About this library
+## MISMO XML Files
+The MISMO 3.4 specification is widely adopted amoung mortgage brokers, wholesale lenders, and other mortgage industry participants.
+
 This library is a collection of utilities for creating, updating, and validation MISMO XML files which can be used to communicate information about mortgage loans.
