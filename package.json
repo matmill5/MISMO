@@ -1,0 +1,72 @@
+{
+    "name": "@morfi-technologies/mismo",
+    "version": "1.0.0",
+    "description": "Typescript library for working with Mortgage Industry Standards Maintenance Organization (MISMO) files",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "lint": "eslint . --ext .ts",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "prepare": "husky install",
+        "prepublishOnly": "pnpm run build && pnpm test && pnpm run lint",
+        "preversion": "pnpm run lint",
+        "version": "npm run format && git add -A src",
+        "postversion": "git push && git push --tags"
+    },
+    "keywords": [
+        "Mortgage Industry Standards Maintenance Organization",
+        "MISMO",
+        "Mortgage",
+        "MISMO XML",
+        "MISMO XSD",
+        "MISMO Validation",
+        "MISMO Creation",
+        "MISMO Validator",
+        "MISMO 3.4",
+        "MISMO 3.5",
+        "MISMO 3.6",
+        "Typescript",
+        "Node.js",
+        "JavaScript"
+    ],
+    "author": "Matthew E. Miller",
+    "license": "AGPL-3.0-or-later",
+    "dependencies": {
+        "libxmljs": "1.0.9"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "3.2.0",
+        "@eslint/js": "9.18.0",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.10.6",
+        "@typescript-eslint/eslint-plugin": "^8.20.0",
+        "@typescript-eslint/parser": "^8.20.0",
+        "eslint": "^9.18.0",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-prettier": "^5.2.1",
+        "globals": "15.14.0",
+        "husky": "^9.1.7",
+        "jest": "^29.7.0",
+        "lint-staged": "^15.3.0",
+        "prettier": "^3.4.2",
+        "ts-jest": "^29.2.5",
+        "typescript": "^5.7.3"
+    },
+    "engines": {
+        "node": ">=18 <23"
+    }
+}
