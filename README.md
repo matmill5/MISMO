@@ -1,6 +1,6 @@
-# Your Package Name
+# MISMO
 
-Description of your package
+Utilities for wokring with Mortgage Industry Standards Maintenance Organization (MISMO) XML files.
 
 ## Installation
 
