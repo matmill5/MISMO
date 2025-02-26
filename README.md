@@ -18,3 +18,14 @@ const result = validateMISMO({
     }
 });
 ```
+## Usage - NextJS
+
+To use with NextJS, you'll need to configure the next.config.js file as follows
+
+```
+const nextConfig = {
+  serverExternalPackages: ['libxmljs', 'path', 'fs', 'url'], // external dependencies,
+  ...config
+}
+
+```
