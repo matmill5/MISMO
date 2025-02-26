@@ -21,7 +21,7 @@
         "dev": "rollup -c -w",
         "test": "vitest",
         "test:watch": "vitest --watch",
-        "lint": "eslint . --ext .ts",
+        "lint": "eslint",
         "format": "prettier --write \"src/**/*.ts\"",
         "prepare": "husky install",
         "prepublishOnly": "pnpm run build && pnpm test && pnpm run lint",

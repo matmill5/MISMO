@@ -51,26 +51,33 @@ export const validateMISMO = ({ mismo, options }: ValidateMISMO): ValidationResu
   };
 };
 
-export const validateMISMONodeLibxml = ({ mismoPath, options }: { mismoPath: string, options: { version: string } }) => {
-  const libxml = new Libxml();
+export const validateMISMONodeLibxml = ({ mismoPath, options }: { mismoPath: string, options: { version: string } }): any => {
+  let libxml = new Libxml();
 
   libxml.loadXml(mismoPath);
 
+  let xsdPath: string;
   switch (options.version) {
-    case '3.4':
-      const xsdPath = path.join(__dirname, 'mismo', '3.4', 'MISMO_3.4.0_B324.xsd');
+    case '3.4': {
+      xsdPath = path.join(__dirname, 'mismo', '3.4', 'MISMO_3.4.0_B324.xsd');
       libxml.loadSchemas([xsdPath]);
       break;
+    }
+    case '3.5': {
+      xsdPath = path.join(__dirname, 'mismo', '3.5', 'MISMO_3.5.0_B344.xsd');
+      libxml.loadSchemas([xsdPath]);
+      break;
+    }
+    case '3.6': {
+      xsdPath = path.join(__dirname, 'mismo', '3.6', 'MISMO_3.6.0_B366.xsd');
+      libxml.loadSchemas([xsdPath]);
+      break;
+    }
     default:
       throw new Error('Invalid MISMO version');
   }
 
-
   libxml.validateAgainstSchemas();
 
-  if (libxml.validationSchemaErrors === undefined) {
-    return true;
-  } else {
-    return { isValid: false, errors: libxml.validationSchemaErrors?.[xsdPath] };
-  }
+  return { isValid: libxml.validationSchemaErrors === undefined, errors: libxml.validationSchemaErrors?.[xsdPath] ?? [] };
 }
