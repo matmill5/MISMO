@@ -4,13 +4,14 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { Libxml } from 'node-libxml';
 
 // Create __dirname equivalent for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export const validateMISMO = ({ mismo, options }: ValidateMISMO): ValidationResult => {
-  const parsedXML: XMLDocument = parseXml(mismo.toString(), options.xmlParserOptions);
+  const parsedXML: XMLDocument = parseXml(mismo.toString(), { ...options.xmlParserOptions });
 
   let xsdSchema: XMLDocument;
   let schemaPath: string;
@@ -50,11 +51,26 @@ export const validateMISMO = ({ mismo, options }: ValidateMISMO): ValidationResu
   };
 };
 
-const result = validateMISMO({
-  mismo: fs.readFileSync(path.join(__dirname, '../tests/samples/mismo-3.4-sample.xml'), 'utf-8'),
-  options: {
-    version: '3.4',
-  },
-});
+export const validateMISMONodeLibxml = ({ mismoPath, options }: { mismoPath: string, options: { version: string } }) => {
+  const libxml = new Libxml();
 
-console.log(result);
+  libxml.loadXml(mismoPath);
+
+  switch (options.version) {
+    case '3.4':
+      const xsdPath = path.join(__dirname, 'mismo', '3.4', 'MISMO_3.4.0_B324.xsd');
+      libxml.loadSchemas([xsdPath]);
+      break;
+    default:
+      throw new Error('Invalid MISMO version');
+  }
+
+
+  libxml.validateAgainstSchemas();
+
+  if (libxml.validationSchemaErrors === undefined) {
+    return true;
+  } else {
+    return { isValid: false, errors: libxml.validationSchemaErrors?.[xsdPath] };
+  }
+}
