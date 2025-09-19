@@ -14,6 +14,7 @@ import { MISMO } from “@morfi-technologies/mismo”;
 const mortgage = new MISMO()
 
 mortgage.addBorrower({ firstName: "Matthew", lastName: "Miller" });
+
 mortgage.addAsset({ financialInstitution: "JP Morgan", amount: "1000", … })
 
 const liabilities = mortgage.getLiabilities()
