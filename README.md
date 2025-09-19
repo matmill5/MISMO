@@ -8,7 +8,8 @@ pnpm add @morfi-technologies/mismo
 
 ## Usage - Creating a MISMO Loan
 
-`import { MISMO } from “@morfi-technologies/mismo”;
+```ts
+import { MISMO } from “@morfi-technologies/mismo”;
 
 const mortgage = new MISMO()
 
@@ -20,7 +21,7 @@ const liabilities = mortgage.getLiabilities()
 const mismoFile = mortgage.export({ version: "3.4" })
 …
 
-`
+```
 
 ## Usage - MISMO Validation
 
