@@ -39,3 +39,5 @@ src/utils/
 src/life-of-a-loan.ts
 src/loan-progress-demo.ts
 src/demo.ts
+
+PRIVATE_README.md

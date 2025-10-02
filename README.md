@@ -1,14 +1,6 @@
 # MISMO
 
-Utilities for working with Mortgage Industry Standards Maintenance Organization (MISMO) XML files.
-
-## Resources
-
-https://github.com/Mermade/jgeXml
-https://xsd-viewer.fly.dev/
-https://quicktype.io/
-
-xsd2json: pnpm --package=jgexml dlx xsd2json ./MISMO_3.6.0_B366.xsd > ./generated/out.json
+Typescript SDK and utility functions for working with Mortgage Industry Standards Maintenance Organization (MISMO) standard.
 
 ## Installation
 
